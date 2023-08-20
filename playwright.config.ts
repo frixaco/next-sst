@@ -71,9 +71,9 @@ export default defineConfig({
 
   /* Run your local dev server before starting the tests */
   webServer: {
-    command: "yarn run dev",
+    command: "yarn run dev --stage frixaco",
     url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
-    timeout: 2 * 60 * 1000,
+    timeout: 60 * 1000,
   },
 });
