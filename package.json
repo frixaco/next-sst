@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "sst bind next dev",
+    "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
@@ -20,8 +20,6 @@
     "check:types": "tsc -p ./tsconfig.json --pretty --noEmit",
     "check:deps": "depcruise src e2e",
     "pipeline": "yarn run prettier && yarn run lint && yarn run check:types && yarn run check:deps && yarn run test:unit && yarn run test:e2e",
-    "deploy:dev": "sst deploy --stage development",
-    "deploy:prod": "sst deploy --stage production",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -62,8 +60,6 @@
     "@types/jest": "29.5.3",
     "@typescript-eslint/eslint-plugin": "6.4.0",
     "@typescript-eslint/parser": "6.4.0",
-    "aws-cdk-lib": "2.91.0",
-    "constructs": "10.2.69",
     "dependency-cruiser": "13.1.3",
     "eslint-config-prettier": "9.0.0",
     "eslint-plugin-storybook": "0.6.13",
@@ -73,7 +69,6 @@
     "jest-environment-jsdom": "29.6.2",
     "prettier": "3.0.2",
     "prettier-plugin-tailwindcss": "0.5.3",
-    "sst": "^2.24.9",
     "storybook": "7.3.2"
   },
   "nextBundleAnalysis": {
