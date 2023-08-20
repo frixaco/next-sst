@@ -46,3 +46,9 @@ next-env.d.ts
 /test-results/
 /playwright-report/
 /playwright/.cache/
+
+# open-next
+/.open-next
+
+# sst
+/.sst
