@@ -1,0 +1,39 @@
+name: Check code style
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  test:
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up node
+        uses: actions/setup-node@v3
+        with:
+          node-version: "18.x"
+
+      - name: Switch to Yarn v3
+        run: corepack enable && yarn -v
+
+      - name: Install dependencies
+        run: yarn install --immutable
+
+      - name: Run ESLint
+        run: yarn lint
+
+      - name: Run Prettier
+        run: yarn prettier
+
+      - name: Check types
+        run: yarn check:types
+
+      - name: Check dependencies
+        run: yarn check:deps
+
+      - name: Run unit tests
+        run: yarn test:unit
