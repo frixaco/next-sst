@@ -10,10 +10,12 @@ export default function Home() {
   }, []);
 
   return (
-    <main className=" flex bg-slate-50">
+    <main className="bg-slate-50">
       <h1>Vbrato</h1>
 
       <AppButton>Click me</AppButton>
+
+      <p>{process.env.NEXT_PUBLIC_API_URL}</p>
     </main>
   );
 }
