@@ -4,6 +4,11 @@ on:
   pull_request:
     types: [closed]
 
+env:
+  # Setup AWS credentials
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
 jobs:
   remove-deployment:
     runs-on: ubuntu-latest
@@ -15,10 +20,6 @@ jobs:
       - name: Remove deployment
         run: |
           if ${{ github.event.pull_request.merged == true || github.event.pull_request.state == 'closed' }}; then
-            # Replace <YOUR_AWS_CREDENTIALS_HERE> and <YOUR_AWS_SECRET_HERE> with your AWS credentials
-            export AWS_ACCESS_KEY_ID=${{ secrets.AWS_ACCESS_KEY_ID }}
-            export AWS_SECRET_ACCESS_KEY=${{ secrets.AWS_SECRET_ACCESS_KEY }}
-
             # Remove the deployment using sst with the PR number as the stage
-            sst remove --stage pr-${{ github.event.pull_request.number }}
+            npx sst remove --stage pr-${{ github.event.pull_request.number }}
           fi
