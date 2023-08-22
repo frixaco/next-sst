@@ -1,18 +1,13 @@
-name: Playwright E2E Tests
+name: Deploy PR
 
 on:
-  push:
   pull_request:
-  workflow_dispatch:
-
-concurrency:
-  group: ${{ github.workflow }}-${{ github.ref }}
-  cancel-in-progress: true
+    types: [opened, synchronize]
 
 jobs:
-  test:
-    timeout-minutes: 60
+  deploy:
     runs-on: ubuntu-latest
+
     steps:
       - uses: actions/checkout@v3
 
@@ -35,15 +30,5 @@ jobs:
       - name: Build
         run: yarn run build
 
-      - name: Install Playwright Browsers
-        run: yarn run test:e2e:install
-
-      - name: Run Playwright tests
-        run: yarn run test:e2e
-
-      - uses: actions/upload-artifact@v3
-        if: always()
-        with:
-          name: playwright-report
-          path: playwright-report/
-          retention-days: 30
+      - name: Deploy PR
+        run: yarn sst deploy --stage pr-${{ github.event.pull_request.number }}
