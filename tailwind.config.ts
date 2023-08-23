@@ -28,11 +28,7 @@ const config: Config = {
         },
         ring: "hsl(var(--ring))",
       },
-      backgroundImage: {
-        "primary-gradient": "var(--primary-gradient)",
-        "block-gradient": "var(--block-gradient)",
-        "block-border-gradient": "var(--block-border-gradient)",
-      },
+      backgroundImage: {},
       borderRadius: {
         md: `calc(var(--radius-md))`,
         lg: `calc(var(--radius-lg))`,

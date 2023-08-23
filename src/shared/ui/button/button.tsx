@@ -9,9 +9,9 @@ const buttonVariants = cva(
   {
     variants: {
       variant: {
-        default: "bg-primary-gradient text-primary-foreground hover:opacity-90",
+        default: "bg-primary-gradient text-primary-foreground",
         outline:
-          "border-2 border-accent/90 hover:border-transparent hover:bg-accent/90 hover:text-accent-foreground",
+          "box-border border-2 border-foreground hover:bg-primary hover:text-primary-foreground",
         destructive: "",
         secondary: "",
         ghost: "",

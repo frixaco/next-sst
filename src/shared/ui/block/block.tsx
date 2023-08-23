@@ -9,7 +9,7 @@ const Block = React.forwardRef<
   <div
     ref={ref}
     className={cn(
-      "flex items-center justify-center rounded-lg bg-block-gradient p-0.5",
+      "bg-block-gradient relative flex items-center justify-center rounded-lg", //  bg-block-gradient
       className
     )}
     {...props}

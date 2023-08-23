@@ -37,7 +37,7 @@ export default {
     return {
       name: "next-sst",
       region: "us-east-1",
-      profile: "admin@rr-ashurmatov-root",
+      profile: "default",
     };
   },
   stacks(app) {
