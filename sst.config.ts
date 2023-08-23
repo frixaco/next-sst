@@ -1,20 +1,26 @@
 import { SSTConfig } from "sst";
 import { NextjsSite } from "sst/constructs";
 
+const localEnvs: Record<string, string> = {
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "localhost:3000",
+};
+
 const developmentEnvs: Record<string, string> = {
-  NEXT_PUBLIC_API_URL: "dev.vbrato.io",
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "dev.vbrato.io",
 };
 
 const testEnvs: Record<string, string> = {
-  NEXT_PUBLIC_API_URL: "dev.vbrato.io",
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "test.vbrato.io",
 };
 
 const productionEnvs: Record<string, string> = {
-  NEXT_PUBLIC_API_URL: "prod.vbrato.io",
+  NEXT_PUBLIC_API_URL: process.env.NEXT_PUBLIC_API_URL || "prod.vbrato.io",
 };
 
 const getEnvs = (stage: string) => {
   switch (stage) {
+    case "local":
+      return localEnvs;
     case "development":
       return developmentEnvs;
     case "test":

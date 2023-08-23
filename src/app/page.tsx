@@ -1,21 +1,20 @@
-"use client";
-import { useEffect } from "react";
-
-import { logger } from "@/shared/logger";
-import { AppButton } from "@/shared/ui/appButton";
+import { Button } from "@/shared/ui/button";
+import { Block } from "@/shared/ui/block";
 
 export default function Home() {
-  useEffect(() => {
-    logger("Hello from logger");
-  }, []);
-
   return (
-    <main className="bg-slate-50">
+    <main>
       <h1>Vbrato</h1>
 
-      <AppButton>Click me</AppButton>
+      <Block className="m-4 h-64 w-96">
+        <Button variant="default">Sign In</Button>
+      </Block>
 
-      <p>{process.env.NEXT_PUBLIC_API_URL}</p>
+      <Block className="m-4 h-64 w-96">
+        <Button variant="outline">Sign Out</Button>
+      </Block>
+
+      <p>Environment: {process.env.NEXT_PUBLIC_API_URL}</p>
     </main>
   );
 }
